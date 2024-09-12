@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -21,9 +22,22 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        Reset();
+    }
+
     public void UpdateCointext(int coinValue)
     {
         coinCount += coinValue;
         cointext.text = "x" + coinCount;
+    }
+
+    public void Reset()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }
